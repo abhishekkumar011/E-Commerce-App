@@ -1,7 +1,20 @@
+"use client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import ProductCard from "@/components/ProductCard";
+import axios from "axios";
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await axios.get("https://fakestoreapi.com/products");
+      setProducts(response.data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div className="m-10 flex flex-col gap-8">
       <h1 className="text-center text-5xl font-medium bg-gradient-to-r from-red-200 via-orange-400 to-yellow-700 text-transparent bg-clip-text">
@@ -53,8 +66,10 @@ export default function Home() {
       </div>
 
       {/* Product Card */}
-      <div className="mt-8">
-        <ProductCard />
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );
