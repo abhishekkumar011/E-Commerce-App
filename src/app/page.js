@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ProductCard from "@/components/ProductCard";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       </h1>
 
       {/* Search Bar  */}
-      <div className="px-10 py-4 rounded-full shadow-md flex items-center gap-4 md:gap-6 flex-col md:flex-row">
+      <div className="py-4 px-10 rounded-full shadow-md flex items-center gap-4 md:gap-6 flex-col md:flex-row">
         <Image
           className="hidden md:flex"
           src="/shirt.jpg"
@@ -36,14 +37,24 @@ export default function Home() {
             placeholder="Search ..."
           />
         </div>
-        <button className="font-semibold bg-gray-900 text-white px-4 py-2 rounded-full cursor-pointer">
-          Search
-        </button>
 
-        <div className="hidden gap-6 items-center md:flex">
-          <h4 className="cursor-pointer text-gray-700">Explore</h4>
-          <h4 className="cursor-pointer text-gray-700">Trending</h4>
+        <div className="flex items-center gap-6 mr-6">
+          <button className="font-semibold bg-orange-600 text-white px-4 py-2 rounded-full cursor-pointer">
+            Search
+          </button>
+          <Image
+            className="cursor-pointer"
+            src="/cart.svg"
+            alt="shirt logo"
+            width={30}
+            height={10}
+          />
         </div>
+      </div>
+
+      {/* Product Card */}
+      <div className="mt-8">
+        <ProductCard />
       </div>
     </div>
   );
