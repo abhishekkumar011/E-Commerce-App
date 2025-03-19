@@ -1,8 +1,8 @@
 "use client";
+import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import ProductCard from "@/components/ProductCard";
-import axios from "axios";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
