@@ -1,19 +1,10 @@
 "use client";
-import axios from "axios";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import ProductCard from "@/components/ProductCard";
+import { useCart } from "@/context/CardContext";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await axios.get("https://fakestoreapi.com/products");
-      setProducts(response.data);
-    };
-    fetchProducts();
-  }, []);
+  const { products } = useCart();
 
   return (
     <div className="m-10 flex flex-col gap-8">
