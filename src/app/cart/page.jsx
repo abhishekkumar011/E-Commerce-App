@@ -18,7 +18,7 @@ const page = () => {
           {cart.map((item, index) => (
             <div
               key={index}
-              className="sm:flex items-center justify-between border-gray-300 border w-full py-5 px-10 rounded-lg shadow-md mt-10"
+              className="md:flex items-center justify-between border-gray-300 border w-full py-5 px-10 rounded-lg shadow-md mt-10"
             >
               <div className="flex items-center gap-8">
                 {/* Image */}
@@ -37,7 +37,7 @@ const page = () => {
 
               {/* Delete Button  */}
               <button
-                className="bg-orange-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-orange-400"
+                className="bg-orange-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-orange-400 mt-5 md:mt-0 w-full md:w-auto"
                 onClick={() => removeFromCart(index)}
               >
                 Remove
