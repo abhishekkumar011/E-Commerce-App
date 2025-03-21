@@ -1,10 +1,12 @@
 "use client";
 import Image from "next/image";
-import ProductCard from "@/components/ProductCard";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CardContext";
+import ProductCard from "@/components/ProductCard";
 
 export default function Home() {
-  const { products } = useCart();
+  const { products, cart } = useCart();
+  const router = useRouter();
 
   return (
     <div className="m-10 flex flex-col gap-8">
@@ -42,10 +44,11 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex items-center gap-6 mr-6">
-          <button className="font-semibold bg-orange-600 text-white px-4 py-2 rounded-full cursor-pointer">
-            Search
-          </button>
+        <button className="font-semibold bg-orange-600 text-white px-4 py-2 rounded-full cursor-pointer">
+          Search
+        </button>
+
+        <div className="relative items-center gap-6 mr-6" onClick={() => router.push("/cart")}>
           <Image
             className="cursor-pointer"
             src="/cart.svg"
@@ -53,6 +56,11 @@ export default function Home() {
             width={30}
             height={10}
           />
+          {cart.length > 0 && (
+            <span className="absolute top-[-10] right-[-20] bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+              {cart.length}
+            </span>
+          )}
         </div>
       </div>
 

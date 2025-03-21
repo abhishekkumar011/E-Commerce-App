@@ -39,7 +39,7 @@ export const CartProvider = ({ children }) => {
 
   //Remove items from the cart
   const removeFromCart = (index) => {
-    setCart(cart.filter((i) => i !== index));
+    setCart(cart.filter((_, i) => i !== index));
   };
 
   return (
